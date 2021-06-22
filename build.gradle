@@ -95,31 +95,8 @@ tasks.withType(Test) {
 
 }
 
-task rest_api_tests(type: Test) {
+task reqres(type: Test) {
     useJUnitPlatform {
         includeTags 'rest_api_tests_reqres'
-        includeTags 'rest_api_tests_weather'
-        includeTags 'rest_api_tests_fx'
-    }
-}
-task rest_api_tests_reqres(type: Test) {
-    useJUnitPlatform {
-        includeTags 'rest_api_tests_reqres'
-    }
-}
-task rest_api_tests_weather(type: Test) {
-    useJUnitPlatform {
-        includeTags 'rest_api_tests_weather'
-    }
-}
-task rest_api_tests_fx(type: Test) {
-    useJUnitPlatform {
-        includeTags 'rest_api_tests_fx'
-    }
-}
-    task tlg_informing(type: Test) {
-    useJUnitPlatform {
-        includeTags 'rest_api_tests_weather'
-        includeTags 'rest_api_tests_fx'
     }
 }
