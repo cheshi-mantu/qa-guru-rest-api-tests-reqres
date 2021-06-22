@@ -1,0 +1,125 @@
+buildscript {
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.8.1"
+    }
+}
+
+plugins {
+    id 'java-library'
+    id 'application'
+    id 'io.qameta.allure' version '2.8.1'
+}
+
+group 'cloud.autotests'
+version '1.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+logging.captureStandardOutput LogLevel.INFO
+
+
+ext {
+    allureVersion = '2.14.0'
+    junitVersion = '5.7.0'
+    restAssuredVersion = "4.3.3"
+    orgJsonVersion = "20201115"
+    orgAspectjVersion = "1.9.6"
+    slfjVersion = "1.7.30"
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+
+allure {
+    version = "${allureVersion}"
+    autoconfigure = true
+    aspectjweaver = true
+    useJUnit5 {
+        version = "${allureVersion}"
+    }
+}
+
+dependencies {
+    testImplementation "org.aspectj:aspectjweaver:${orgAspectjVersion}"
+    testImplementation "io.qameta.allure:allure-rest-assured:${allureVersion}"
+    testImplementation "io.qameta.allure:allure-junit-platform:${allureVersion}"
+    testImplementation "io.qameta.allure:allure-junit5:${allureVersion}"
+
+
+    testImplementation "io.rest-assured:rest-assured:${restAssuredVersion}"
+    testImplementation "io.rest-assured:xml-path:${restAssuredVersion}"
+
+    testImplementation 'ch.qos.logback:logback-classic:1.2.3'
+    testImplementation "org.json:json:${orgJsonVersion}"
+    testImplementation 'org.hamcrest:hamcrest-all:1.3'
+    testImplementation "org.slf4j:slf4j-simple:${slfjVersion}"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:${junitVersion}"
+
+}
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+
+}
+
+tasks.withType(Test) {
+    systemProperties = System.properties
+    systemProperty("junit.jupiter.extensions.autodetection.enabled", "true") // to run allure testops selective tasks
+    testLogging {
+
+        // set options for log level LIFECYCLE
+        events "failed",
+//                "started",
+//                "passed",
+//                "skipped",
+                "standard_out",
+                "standard_error"
+        exceptionFormat "full"
+        showExceptions true
+        showCauses true
+        showStackTraces true
+//        showStandardStreams true
+    }
+
+}
+
+task rest_api_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags 'rest_api_tests_reqres'
+        includeTags 'rest_api_tests_weather'
+        includeTags 'rest_api_tests_fx'
+    }
+}
+task rest_api_tests_reqres(type: Test) {
+    useJUnitPlatform {
+        includeTags 'rest_api_tests_reqres'
+    }
+}
+task rest_api_tests_weather(type: Test) {
+    useJUnitPlatform {
+        includeTags 'rest_api_tests_weather'
+    }
+}
+task rest_api_tests_fx(type: Test) {
+    useJUnitPlatform {
+        includeTags 'rest_api_tests_fx'
+    }
+}
+    task tlg_informing(type: Test) {
+    useJUnitPlatform {
+        includeTags 'rest_api_tests_weather'
+        includeTags 'rest_api_tests_fx'
+    }
+}
