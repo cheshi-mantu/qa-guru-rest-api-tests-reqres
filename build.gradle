@@ -81,16 +81,16 @@ tasks.withType(Test) {
 
         // set options for log level LIFECYCLE
         events "failed",
-//                "started",
-//                "passed",
-//                "skipped",
+                "started",
+                "passed",
+                "skipped",
                 "standard_out",
                 "standard_error"
         exceptionFormat "full"
         showExceptions true
         showCauses true
         showStackTraces true
-//        showStandardStreams true
+        showStandardStreams true
     }
 
 }
