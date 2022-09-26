@@ -12,7 +12,7 @@ public class TestBase {
     public static void setUp(){
 
     System.out.println("Dummy Before All method");
-    System.out.println(String.format("Created %s", CREATED_USER));
+    System.out.println("Created " + CREATED_USER);
 
     }
 }
