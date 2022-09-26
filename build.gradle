@@ -97,6 +97,6 @@ tasks.withType(Test) {
 
 task reqres(type: Test) {
     useJUnitPlatform {
-        includeTags 'rest_api_tests_reqres'
+
     }
 }
