@@ -75,6 +75,8 @@ tasks.withType(JavaCompile) {
 }
 
 tasks.withType(Test) {
+    useJUnitPlatform {
+    }
     systemProperties = System.properties
     systemProperty("junit.jupiter.extensions.autodetection.enabled", "true") // to run allure testops selective tasks
     testLogging {

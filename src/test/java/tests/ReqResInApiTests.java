@@ -313,8 +313,8 @@ class ReqResInApiTests extends TestBase {
         step("PREP rest assured config' ", ()-> {
             config = RestAssured.config()
                 .httpClient(HttpClientConfig.httpClientConfig()
-                    .setParam(CoreConnectionPNames.CONNECTION_TIMEOUT, 5000)
-                    .setParam(CoreConnectionPNames.SO_TIMEOUT, 5000));
+                    .setParam(CoreConnectionPNames.CONNECTION_TIMEOUT, 1000)
+                    .setParam(CoreConnectionPNames.SO_TIMEOUT, 1000));
         });
         step("ACT: sending request ", ()-> {
             response =
