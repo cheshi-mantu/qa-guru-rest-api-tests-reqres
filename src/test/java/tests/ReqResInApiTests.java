@@ -4,19 +4,12 @@ import helpers.AttachmentsHelper;
 import io.qameta.allure.*;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
-import io.restassured.config.HttpClientConfig;
-import io.restassured.config.RestAssuredConfig;
-import io.restassured.http.Method;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-import org.apache.http.params.CoreConnectionPNames;
 import org.junit.jupiter.api.*;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Feature("Bulk import")
 @Story("Checking the results of bulk import")
