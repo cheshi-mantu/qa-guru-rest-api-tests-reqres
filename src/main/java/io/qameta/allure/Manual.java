@@ -14,7 +14,6 @@ import java.lang.annotation.Target;
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD, ElementType.TYPE})
-@LabelAnnotation(name = "ALLURE_MANUAL", value = "true")
 public @interface Manual {
 
 }
