@@ -1,10 +1,7 @@
 package tests;
 
 import helpers.AttachmentsHelper;
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.config.HttpClientConfig;
@@ -25,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Feature("Work with REST API")
 @Story("REST API tests with REST Assured")
 @Tag("rest_api_tests_reqres")
+@Layer("rest")
 class ReqResInApiTests extends TestBase {
     private String baseUrl = "https://reqres.in";
     Integer resultsTotal;
